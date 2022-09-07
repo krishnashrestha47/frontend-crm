@@ -8,7 +8,7 @@
 
 .default-layout {
   display: grid;
-  grid-template-rows: 80px auto 3rem;
+  grid-template-rows: 60px auto 3rem;
   grid-template-areas:
     "header"
     "main"
@@ -21,6 +21,7 @@ header {
 
 main {
   grid-area: main;
+  min-height: 88vh;
 }
 
 footer {
