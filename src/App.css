@@ -5,3 +5,27 @@
   background-color: #e9ecef;
   border-radius: 0.3rem;
 }
+
+.default-layout {
+  display: grid;
+  grid-template-rows: 80px auto 3rem;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+  background: black;
+  padding: 1rem;
+  color: white;
+}
