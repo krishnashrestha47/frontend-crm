@@ -43,7 +43,9 @@ export const PasswordResetComp = ({ handleOnShow }) => {
       </Row>
       <Row>
         <Col className="text-end">
-          <a href="#!">Go to login</a>
+          <a href="#!" onClick={handleOnShow}>
+            Go to login
+          </a>
         </Col>
       </Row>
     </Container>

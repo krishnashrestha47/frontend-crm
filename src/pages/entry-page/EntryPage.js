@@ -4,12 +4,19 @@ import { PasswordResetComp } from "../../components/password-reset/PasswordReset
 import "./entryPage.css";
 
 export const EntryPage = () => {
+  const [show, setShow] = useState(true);
+  const handleOnShow = () => {
+    setShow(!show);
+  };
+
   return (
     <div className="entry-page bg-info">
       <div className="jumbotron form-box">
-        <Login />
-
-        <PasswordResetComp />
+        {show ? (
+          <Login handleOnShow={handleOnShow} />
+        ) : (
+          <PasswordResetComp handleOnShow={handleOnShow} />
+        )}
       </div>
     </div>
   );

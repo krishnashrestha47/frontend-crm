@@ -6,7 +6,7 @@ const initialState = {
   password: "",
 };
 
-export const Login = () => {
+export const Login = ({ handleOnShow }) => {
   const [formDt, setFormDt] = useState(initialState);
 
   const handleOnChange = (e) => {
@@ -56,7 +56,9 @@ export const Login = () => {
       </Row>
       <Row>
         <Col className="text-end">
-          <a href="#!">Forgot Password?</a>
+          <a href="#!" onClick={handleOnShow}>
+            Forgot Password?
+          </a>
         </Col>
       </Row>
     </Container>
