@@ -1,12 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { shortText } from "../../utils/validation.js";
 
-const handleOnChange = () => {};
-const handleOnSubmit = () => {};
+import "./AddTicketFormComp.css";
+
+const initialFormData = {
+  subject: "",
+  issueDate: "",
+  detail: "",
+};
+
+const initialFormError = {
+  subject: false,
+  issueDate: false,
+  detail: false,
+};
 
 export const AddTicketFormComp = () => {
+  const [formData, setFormData] = useState(initialFormData);
+  const [formErr, setFormErr] = useState(initialFormError);
+
+  useEffect(() => {}, []);
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    setFormErr(initialFormError);
+    const isSubjectValid = await shortText(formData.subject);
+
+    setFormErr({
+      ...initialFormError,
+      subject: !isSubjectValid,
+    });
+
+    console.log(formData);
+  };
+
   return (
-    <div className="jumbotron">
+    <div className="jumbotron mt-5 add-new-ticket">
       <Form onSubmit={handleOnSubmit}>
         <Form.Group as={Row} className="mb-3">
           <Form.Label column sm={3}>
@@ -19,6 +57,9 @@ export const AddTicketFormComp = () => {
               name="subject"
               required
             />
+            <Form.Text className="text-danger">
+              {formErr.subject && "subject is required!"}
+            </Form.Text>
           </Col>
         </Form.Group>
 
@@ -42,6 +83,7 @@ export const AddTicketFormComp = () => {
           <Col sm={9}>
             <Form.Control
               as="textarea"
+              rows="5"
               onChange={handleOnChange}
               name="details"
               required
