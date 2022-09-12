@@ -6,17 +6,27 @@ import { MessageHistory } from "../../components/message-history/MessageHistory"
 import { UpdateTicket } from "../../components/update-ticket/UpdateTicket";
 
 import tickets from "../../asset/data/dummy-tickets.json";
-
-const ticket = tickets[0];
+import { useParams } from "react-router-dom";
 
 export const TicketPage = () => {
   const [message, setMessage] = useState("");
 
+  const { id } = useParams();
+
+  const [ticket, setTicket] = useState("");
+
+  useEffect(() => {
+    for (let i = 0; i < tickets.length; i++) {
+      if (tickets[i].id == id) {
+        setTicket(tickets[i]);
+        continue;
+      }
+    }
+  }, [message]);
+
   const handleOnChange = (e) => {
     setMessage(e.target.value);
   };
-
-  useEffect(() => {}, [message]);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -34,8 +44,8 @@ export const TicketPage = () => {
       <Row>
         <Col className="fw-bold text-secondary">
           <div className="subject">Subject: {ticket.subject}</div>
-          <div className="date">Subject: {ticket.date}</div>
-          <div className="status">Subject: {ticket.status}</div>
+          <div className="date">Opened Date: {ticket.date}</div>
+          <div className="status">Ticket Status: {ticket.status}</div>
         </Col>
         <Col>
           <Button variant="outline-info">Close Ticket</Button>
