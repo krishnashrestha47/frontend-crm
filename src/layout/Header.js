@@ -1,7 +1,13 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    navigate("/");
+  };
   return (
     <Navbar className="fw-bold" bg="info" variant="light" expand="lg">
       <Container>
@@ -9,9 +15,15 @@ export const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-            <Nav.Link href="/tickets">Tickets</Nav.Link>
-            <Nav.Link href="/logout">Logout</Nav.Link>
+            <Link to="/dashboard" className="nav-link">
+              Dashboard
+            </Link>
+            <Link to="/tickets" className="nav-link">
+              Tickets
+            </Link>
+            <Nav.Link onClick={logout} className="nav-link">
+              Logout
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -11,8 +11,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
-    <DefaultLayout>
-      <BrowserRouter>
+    <BrowserRouter>
+      <DefaultLayout>
         <Routes>
           <Route path="/" element={<EntryPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
@@ -21,8 +21,8 @@ const App = () => {
           <Route path="/ticket:id" element={<TicketPage />} />
         </Routes>
         <ToastContainer />
-      </BrowserRouter>
-    </DefaultLayout>
+      </DefaultLayout>
+    </BrowserRouter>
   );
 };
 

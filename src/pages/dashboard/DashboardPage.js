@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { BreadcrumbComp } from "../../components/breadcrumb/BreadcrumbComp";
 import { TicketTable } from "../../components/ticket-table/TicketTable";
+import tickets from "../../asset/data/dummy-tickets.json";
 
 const DashboardPage = () => {
   return (
@@ -30,7 +31,7 @@ const DashboardPage = () => {
       <hr />
       <Row>
         <Col className="recent-tickets">
-          <TicketTable />
+          <TicketTable tickets={tickets} />
         </Col>
       </Row>
     </Container>
