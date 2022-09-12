@@ -5,6 +5,7 @@ import { SearchFormComp } from "../../components/search-form/SearchFormComp";
 import { TicketTable } from "../../components/ticket-table/TicketTable";
 
 import tickets from "../../asset/data/dummy-tickets.json";
+import { Link } from "react-router-dom";
 
 export const TicketListPage = () => {
   const [str, setStr] = useState("");
@@ -34,7 +35,9 @@ export const TicketListPage = () => {
       </Row>
       <Row className="mt-4">
         <Col>
-          <Button variant="info">Add New Ticket</Button>
+          <Link to="/add-ticket">
+            <Button variant="info">Add New Ticket</Button>
+          </Link>
         </Col>
         <Col className="text-end">
           <SearchFormComp handleOnChang={handleOnChange} str={str} />

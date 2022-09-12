@@ -40,7 +40,7 @@ const App = () => {
           }
         />
         <Route
-          path="/ticket:id"
+          path="/ticket/:id"
           element={
             <PrivateRoute>
               <TicketPage />
