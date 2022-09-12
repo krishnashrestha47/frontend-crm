@@ -1,7 +1,7 @@
 import React from "react";
 import "./messageHistory.css";
 
-export const MessaegHistory = ({ msg }) => {
+export const MessageHistory = ({ msg }) => {
   return (
     <>
       {!msg.length ? (

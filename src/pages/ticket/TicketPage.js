@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { BreadcrumbComp } from "../../components/breadcrumb/BreadcrumbComp";
 
-import { MessageHistory } from "../../components/message-history/MessaegHistory";
+import { MessageHistory } from "../../components/message-history/MessageHistory";
 import { UpdateTicket } from "../../components/update-ticket/UpdateTicket";
+
+import tickets from "../../asset/data/dummy-tickets.json";
+
+const ticket = tickets[0];
 
 export const TicketPage = () => {
   const [message, setMessage] = useState("");
