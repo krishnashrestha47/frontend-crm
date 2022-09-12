@@ -1,27 +1,34 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 
-export const TicketTable = () => {
+export const TicketTable = ({ tickets }) => {
   return (
-    <div>
-      <Table striped bordered hover variant="info">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Subjects</th>
-            <th>Status</th>
-            <th>Opened Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>ssl issue</td>
-            <td>client response pending</td>
-            <td>2022/02/22</td>
-          </tr>
-        </tbody>
-      </Table>
-    </div>
+    <>
+      {!tickets.length ? (
+        <p className="text-center fw-bold">No tickets to show</p>
+      ) : (
+        <Table striped bordered hover variant="info">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Subjects</th>
+              <th>Status</th>
+              <th>Opened Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tickets.length &&
+              tickets.map((item) => (
+                <tr>
+                  <td>{item.id}</td>
+                  <td>{item.subject}</td>
+                  <td>{item.status}</td>
+                  <td>{item.date}</td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
+      )}
+    </>
   );
 };
